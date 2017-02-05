@@ -1,0 +1,30 @@
+{
+	"name": "Teste Conta Azul",
+	"debug": true,
+	"assets_path": "assets/",
+	"jsfiles": [
+		"bower_components/angular/angular.js",
+		"bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js",
+		"bower_components/angular-ui-mask/dist/mask.js",
+		"bower_components/angular-flash-alert/dist/angular-flash.js",
+		"bower_components/angular-input-masks/angular-input-masks-standalone.js",
+
+		"assets/languages/angular-locale_pt-br.js",
+
+		"assets/js/app.js",
+
+		"assets/js/modules/constants/constants.js",
+
+		"assets/js/modules/contaAzulServices/module.js",
+        "assets/js/modules/contaAzulServices/services/*.js",
+
+		"assets/js/modules/header/module.js",
+        "assets/js/modules/header/controllers/*.js",
+        "assets/js/modules/header/directives/*.js",
+
+        "assets/js/modules/grid/module.js",
+        "assets/js/modules/grid/controllers/*.js"
+
+    ]
+    
+}

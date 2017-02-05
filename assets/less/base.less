@@ -1,0 +1,319 @@
+@font-face {
+	font-family: "ProximaNovaRegular";
+	src: url("../fonts/ProximaNovaRegular.eot");
+	src: local("../fonts/ProximaNovaRegular"), url("../fonts/ProximaNovaRegular.woff") format("woff"), url("../fonts/ProximaNovaRegular.ttf") format("truetype");
+}
+
+@font-face {
+	font-family: "ProximaNovaSemibold";
+	src: url("../fonts/ProximaNovaSemibold.eot");
+	src: url("../fonts/ProximaNovaSemibold.woff2") format("woff2");
+}
+
+@font-face {
+	font-family: "ProximaNovaLight";
+	src: url("../fonts/ProximaNovaLight.eot");
+	src: url("../fonts/ProximaNovaLight.woff2") format("woff2");
+}
+
+.confirmation  {
+
+    .modal-header {
+        border-bottom: 0 none;
+        position: absolute;
+        right: 0;
+        width: 100%;
+        z-index: 50;
+    }
+
+    .modal-footer {
+        border-top: 0 none;
+    }
+
+}
+
+.btn-success, .btn-danger, .btn-default, .btn-primary {
+	font-family: "ProximaNovaSemibold";
+	padding: 9px 32px;
+
+    &.add-car {
+        margin-bottom: 20px;
+    }
+
+}
+
+.btn-danger {
+    padding: 9px 15px;
+    &.rmv-car {
+        margin-bottom: 20px;
+    }
+
+}
+
+.form-group {
+    .validate-msg {
+        position: absolute;
+        right: 15px;
+        top: 0;
+        color: @brand-danger;
+    }
+}
+
+table {
+    thead th {
+        a {
+
+            &.active-sort::after {
+                content: "";
+                font-family: FontAwesome;
+                left: 10px;
+                position: relative;
+            }
+
+            &.active-sort-reverse::after {
+                content: "";
+                font-family: FontAwesome;
+                left: 10px;
+                position: relative;
+            }
+
+        }
+
+    }
+    
+}
+
+.table-curved > thead > tr > th, .table-curved > thead > tr > td {
+	border-bottom-width: 0px !important;
+}
+
+a {
+    outline: none;
+    &:hover, &:focus {
+        text-decoration: none;
+    }
+
+}
+
+.placa {
+    text-transform: uppercase;
+}
+
+.input-group-btn {
+
+    .btn.btn-default {
+        font-size: 12px;
+        padding: 9px 12px;
+        background-color: #F1F4F9;
+        color: #3B5B7A;
+
+        &:hover {
+            background-color: darken(#F1F4F9,5%);
+        }
+
+    }
+
+}
+
+.ng-submitted {
+    .ng-invalid {
+        border-color: @brand-danger;
+    }
+}
+
+.form-control {
+    box-shadow: none !important; 
+
+    &.ng-touched.ng-invalid {
+        border-color: @brand-danger;
+    }
+
+    &.duplicated {
+        border-color: @brand-danger;
+    }
+
+}
+
+.pagination {
+    display: table;
+    margin: 10px auto;
+    padding-left: 0;
+    font-family: "ProximaNovaRegular";
+
+    .pagination-prev, .pagination-next {
+        font-family: 'FontAwesome';
+        font-size: 18px;
+
+        span, a {
+            padding: 6px 14px;
+        }
+
+    }
+
+    .pagination-page a {
+        font-size: 15px;
+        padding: 9px 15px 7px !important;
+    }
+
+}
+
+.modal-body {
+    padding: 30px;
+}
+
+.table-curved {
+    border-collapse: separate;
+    border: solid @table-border-color 1px;
+    border-radius: @table-radius;
+    border-left:0px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    color: #3B5B7A;
+    background: #F8FAFC;
+    border-bottom: 0;
+
+  	thead > tr > th {
+		padding: 10px 8px;
+		&:last-child {
+			padding-right: 40px; 
+		}
+	}
+
+	tbody > tr > td {
+		padding: 14px 8px;
+		&:last-child {
+			padding-right: 40px; 
+		}
+	}
+
+    td, th {
+
+        border-top: 1px solid @table-border-color;
+
+    	&:first-of-type {
+    		border-left: 1px solid @table-border-color;
+    	}
+
+        &.clickable {
+            cursor: pointer;
+        }
+
+    }
+
+    th {
+    	font-size: 12px;
+    	border-top: none;
+    	font-family: "ProximaNovaRegular";
+    	a { color: #476582; }
+
+    }
+
+    th:first-child {
+      border-radius: @table-radius 0 0 0;
+    }
+
+    th:last-child {
+      border-radius: 0 @table-radius 0 0;
+    }
+
+    th:only-child{
+      border-radius: @table-radius @table-radius 0 0;
+    }
+
+    tbody {
+    	font-family: "ProximaNovaRegular";
+    	font-size: 14px;
+
+    	tr {
+
+    		&:last-child td {
+    			border-bottom: 1px solid @table-border-color;
+    		}
+    		
+    		&.row-ckecked {
+    			background-color: #D7E8FB;
+    			border-color: #89C7F6;
+
+    			td {
+    				border-color: #89C7F6;
+    				border-bottom: 1px solid #89C7F6;
+    			}
+
+    		}
+
+    		&.row-ckecked +tr td {
+    			border-top: 0;
+    		}
+
+    	}
+
+    }
+
+}
+
+/* Base for label styling */
+[type="checkbox"]:not(:checked),
+[type="checkbox"]:checked {
+	position: absolute;
+	left: -9999px;
+}
+[type="checkbox"]:not(:checked) + label,
+[type="checkbox"]:checked + label {
+	position: relative;
+	padding-left: 25px;
+	cursor: pointer;
+}
+
+/* checkbox aspect */
+[type="checkbox"]:not(:checked) + label:before,
+[type="checkbox"]:checked + label:before {
+	background: #fff none repeat scroll 0 0;
+    border: 1px solid #c8d2dc;
+    border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset;
+    content: "";
+    height: 20px;
+    left: 2px;
+    position: absolute;
+    top: -9px;
+    width: 20px;
+}
+/* checked mark aspect */
+[type="checkbox"]:not(:checked) + label:after,
+[type="checkbox"]:checked + label:after {
+	content: '';
+	position: absolute;
+	top: -4px; left: 5px;
+	font-size: 13px;
+	line-height: 0.8;
+	color: #526F8B;
+	transition: all .2s;
+	font-family: 'FontAwesome';
+}
+/* checked mark aspect changes */
+[type="checkbox"]:not(:checked) + label:after {
+	opacity: 0;
+	transform: scale(0);
+}
+[type="checkbox"]:checked + label:after {
+	opacity: 1;
+	transform: scale(1);
+}
+/* disabled checkbox */
+[type="checkbox"]:disabled:not(:checked) + label:before,
+[type="checkbox"]:disabled:checked + label:before {
+	box-shadow: none;
+	border-color: #bbb;
+	background-color: #ddd;
+}
+[type="checkbox"]:disabled:checked + label:after {
+	color: #999;
+}
+[type="checkbox"]:disabled + label {
+	color: #aaa;
+}
+
+/* hover style just for information */
+label:hover:before {
+	border: 1px solid #4778d9!important;
+}

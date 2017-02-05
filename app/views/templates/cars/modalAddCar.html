@@ -1,0 +1,67 @@
+<div class="modal-header">
+    <h3 class="modal-title" id="modal-title">{{actionTitle}} Carro</h3>
+</div>
+
+<form name="addEditCarForm" novalidate="novalidate" ng-submit="submitAddEditCar()">
+    <div class="modal-body" id="modal-body">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Placa*</label>
+                    <input type="text" class="form-control placa" ng-readonly="placaReadonly" ng-model="placa" ui-mask="AAA9999" required>
+                    <span class="validate-msg">{{validateMsg.placa}}</span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Modelo*</label>
+                    <input type="text" class="form-control" ng-model="modelo" maxlength="20" required>
+                    <span class="validate-msg">{{validateMsg.modelo}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Marca*</label>
+                    <input type="text" class="form-control" ng-model="marca" maxlength="20" required>
+                    <span class="validate-msg">{{validateMsg.marca}}</span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Foto</label>
+                    <input type="text" class="form-control" ng-model="foto" maxlength="300">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Combustível*</label>
+                    <select class="form-control" ng-model="combustivel" required>
+                        <option>Gasolina</option>
+                        <option>Alcool</option>
+                        <option>Flex</option>
+                        <option>Diesel</option>
+                        <option>GNV</option>
+                        <option>Elétrico</option>
+                        <option>Híbrido</option>
+                    </select>
+                    <span class="validate-msg">{{validateMsg.combustivel}}</span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Valor*</label>
+                    <input type="text" class="form-control" ng-model="valor" maxlength="11" ui-number-mask="2" required>
+                    <span class="validate-msg">{{validateMsg.valor}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-success" type="submit">Salvar</button>
+        <button class="btn btn-default" type="button" ng-click="cancel()">Cancelar</button>
+    </div>
+</form>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html ng-app="testeContaAzul">
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <link rel="stylesheet" type="text/css" href="assets/css/vendors.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/app.css">
+        <script type="text/javascript" src="assets/js/app.js"></script>
+    </head>
+
+    <body>
+
+        <header-partial></header-partial>
+
+        <section id="main" ng-controller="mainController">
+
+            <div class="container" ng-controller="gridController" ng-init="currentPage=1;">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <button type="button" class="btn btn-success add-car" ng-click="addCar()">Novo Carro</button>
+                        <button type="button" class="btn btn-danger rmv-car" ng-click="rmvCar()"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                    </div>
+                    <div class="col-md-3 col-md-offset-3">
+                        <div class="input-group">
+                            <input type="text" class="form-control" ng-model="searchCar" placeholder="Pesquisar">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="grid">
+
+                    <div class="row">
+
+                        <div class="col-md-12">
+                                
+                            <table class="table table-curved">
+                                <thead>
+                                  <tr>
+                                    <th width="20px"><input type="checkbox" id="allChecked" ng-checked="allChecked" ng-click="toggleCheck()" ng-true-value="true" ng-false-value="false"><label for="allChecked"></label></th>
+                                    <th width="150px">
+                                        <a href="javascript:void(0);" 
+                                           ng-class="{'placa': 'active-sort', '-placa': 'active-sort-reverse'}[orderParam]"
+                                           ng-click="sortCars('placa')">Placa</a>
+                                    </th>
+                                    <th width="140px">
+                                        <a href="javascript:void(0);" 
+                                           ng-class="{'modelo': 'active-sort', '-modelo': 'active-sort-reverse'}[orderParam]"
+                                           ng-click="sortCars('modelo')">Modelo</a>
+                                    </th>
+                                    <th width="170px">
+                                        <a href="javascript:void(0);" 
+                                           ng-class="{'marca': 'active-sort', '-marca': 'active-sort-reverse'}[orderParam]"
+                                           ng-click="sortCars('marca')">Marca</a>
+                                    </th>
+                                    <th width="160px">Foto</th>
+                                    <th>
+                                        <a href="javascript:void(0);" 
+                                           ng-class="{'combustivel': 'active-sort', '-combustivel': 'active-sort-reverse'}[orderParam]"
+                                           ng-click="sortCars('combustivel')">Combustível</a>
+                                    </th>
+                                    <th class="text-right">
+                                        <a href="javascript:void(0);" 
+                                           ng-class="{'valor': 'active-sort', '-valor': 'active-sort-reverse'}[orderParam]"
+                                           ng-click="sortCars('valor')">Valor</a>
+                                    </th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="car in carsArray | filter:filterFn | orderBy: orderParam | limitTo : pageSize : (currentPage - 1) * pageSize as filtered track by car.placa"
+                                    ng-class="{true: 'row-ckecked', false: 'row-unckecked'}[chkCars[car.placa]]">
+                                        <td><input type="checkbox" id="chkCars{{car.placa}}" ng-model="chkCars[car.placa]" ng-change="toggleCheckItem()"><label for="chkCars{{car.placa}}"></label></td>
+                                        <td class="placa clickable" ng-click="editCar(car.placa);">{{car.placa}}</td>
+                                        <td class="clickable" ng-click="editCar(car.placa);">{{car.modelo}}</td>
+                                        <td class="clickable" ng-click="editCar(car.placa);">{{car.marca}}</td>
+                                        <td ng-if="car.imagem"><a href="{{car.imagem}}" target="_blank">Imagem</a></td>
+                                        <td ng-if="!car.imagem">Sem Imagem</td>
+                                        <td class="clickable" ng-click="editCar(car.placa);">{{car.combustivel}}</td>
+                                        <td class="clickable text-right" ng-click="editCar(car.placa);">{{car.valor | currency : ''}}</td>
+                                    </tr>
+                                    <tr ng-if="!carsArray.length || filtered.length == 0">
+                                        <td class="text-center" colspan="8">Nenhum registro encontrado.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                    
+                        <div class="col-md-12">
+                            <ul class="pagination" 
+                                uib-pagination
+                                total-items="(carsArray | filter:searchCar).length"
+                                ng-change="pageChanged()"
+                                items-per-page="pageSize"
+                                ng-model="currentPage" 
+                                previous-text=""
+                                next-text=""
+                                boundary-link-numbers="true"
+                                rotate="false"></ul>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                    <flash-message></flash-message>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </body>
+
+</html> 
